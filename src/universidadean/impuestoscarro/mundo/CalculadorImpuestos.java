@@ -180,6 +180,7 @@ public class CalculadorImpuestos {
     private RangoImpuesto buscarRangoImpuesto(double valor) {
         RangoImpuesto rango = null;
 
+
         for (RangoImpuesto _rango : this.rangosImpuesto) {
            if(_rango.contieneA(valor)) {
                rango = _rango;
