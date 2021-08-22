@@ -308,7 +308,7 @@ public class CalculadorImpuestos {
         return masCaro;
     }
 
-    }
+
 
     /**
      * Busca y retorna el primer vehículo que encuentra con la marca que llega por parámetro. <br>
@@ -341,8 +341,15 @@ public class CalculadorImpuestos {
      * @return El vehículo de la línea, null si no encuentra ninguno.
      */
     public Vehiculo buscarVehiculoPorLinea(String linea) {
+
         Vehiculo buscado = null;
 
+        for (Vehiculo v: vehiculos){
+            if (v.darLinea().equalsIgnoreCase(linea)){
+                buscado = v;
+            }
+
+        }
         // TODO: Buscar el primer vehículo que tiene la línea dada
 
         return buscado;
@@ -354,9 +361,23 @@ public class CalculadorImpuestos {
      * @return El vehículo más antiguo.
      */
     public Vehiculo buscarVehiculoMasAntiguo() {
+
         Vehiculo buscado = null;
 
         // TODO: Buscar el vehículo más antiguo del sistema
+
+        String anio = vehiculos[0].darAnio();
+
+
+        int vaño1 = Integer.parseInt(anio);
+
+        for (Vehiculo v: vehiculos){
+            int vaño = Integer.parseInt(v.darAnio());
+            if (vaño <= vaño1) {
+                vaño1 = vaño;
+                buscado = v;
+            }
+        }
 
         return buscado;
     }
@@ -368,9 +389,19 @@ public class CalculadorImpuestos {
      */
     public double promedioPreciosVehiculos() {
         double promedio = 0.0;
+        int totalvehiculos = vehiculos.length;
+
+        for (Vehiculo v : vehiculos) {
+
+            promedio += v.darPrecio();
+
+        }
+
+        promedio = (double) promedio/ totalvehiculos;
 
         return promedio;
     }
+
 
 
 }
